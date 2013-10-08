@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="PlacesApp">
+<head>
+    <title></title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="PlacesController">
+
+<h1>Places</h1>
+
+<input ng-model="placeId" placeholder="Place Id">
+<button class="btn btn-primary" ng-click="loadPlace(placeId)">Load Comic</button>
+
+<div class="place-detail">
+    <h2>{{place.Name}}</h2>
+    <h3>{{place.Description}}</h3>
+    <address>{{place.Address}}</address>
+</div>
+
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -6472,7 +6472,6 @@ function $HttpProvider() {
          *
          * See "Setting HTTP Headers" and "Transforming Requests and Responses" sections above.
          */
-    $http.defaults = defaults;
 
 
     return $http;
