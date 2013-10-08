@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="SimpleApp">
+<head>
+    <title></title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="SimpleController">
+<h1>Filters</h1>
+<ul>
+    <li><strong>{{amount|currency}}</strong> Currency</li>
+
+    <li><strong>{{loud|lowercase}} </strong> Lowercase</li>
+
+    <li><strong>{{quiet|uppercase}}</strong>uppercase</li>
+    <li>
+        <input placeholder="Word Limit" ng-model="limit">
+        <span>{{hush|limitTo:limit}}</span>
+    </li>
+    <li><span>{{name|namebadge}}</span></li>
+</ul>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

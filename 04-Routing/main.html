@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="SimpleApp">
+<head>
+    <title></title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #color { height: 500px; width: 500px;}
+        .blue { background-color: #BFBFFF }
+        .red { background-color: #FFBFBF }
+    </style>
+</head>
+<body>
+
+<a ng-href="#/red">Red</a>
+<br>
+<a ng-href="#/blue">Blue</a>
+
+<div ng-view></div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
