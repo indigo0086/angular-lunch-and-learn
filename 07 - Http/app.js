@@ -1,18 +1,32 @@
 var app = angular.module("xkcdApp", ["ngResource"]);
 
-app.controller("xkcdController", function ($scope, $http) {
-    var url = "http://xkcd.com/info.0.json?callback=JSON_CALLBACK";
-    $http.jsonp(url)
+function setComic(http, url, scope) {
+    http.get(url)
         .success(function(data){
-            console.info(data);
-            $scope.comic = data;
+            scope.comic = data;
+            scope.hasError = false;
+        })
+        .error(function(){
+            scope.hasError = true;
         });
+}
 
-    $scope.placeId = 1;
+app.controller("xkcdController", function ($scope, $http) {
+    var proxy = "http://jsonp.jit.su/?url="
+    var latestUrl = proxy + "http://xkcd.com/info.0.json";
 
-    $scope.loadPlace = function(placeId){
-        Comics.then(function(response){
-            $scope.comic = response.data;
-        });
-    }
+    //get latest comic on load
+    setComic($http, latestUrl, $scope)
+
+    $scope.loadComic = function(placeId){
+        var url = proxy + "http://xkcd.com/" + $scope.issueNumber + "/info.0.json";
+        setComic($http, url, $scope);
+    };
+
+    $scope.hasErrorClass = function(){
+        if($scope.hasError){
+            return "has-error";
+        }
+        return "";
+    };
 });

@@ -3,18 +3,27 @@
 <head>
     <title></title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #issue {
+            width: 250px;
+        }
+        img { display: block; }
+    </style>
 </head>
 <body ng-controller="xkcdController">
 
-<h1>Places</h1>
+<h1>XKCD</h1>
 
-<input ng-model="placeId" placeholder="Place Id">
-<button class="btn btn-primary" ng-click="loadPlace(placeId)">Load Comic</button>
-
-<div class="place-detail">
-    <h2>{{comic.title}}</h2>
-    <img ng-src="comic.img">
-    <small>{{place.alt}}</small>
+<form>
+    <div class="form-group" ng-class="hasErrorClass()">
+        <label for="issue" ng-show="hasError">No Comic Found</label>
+        <input id="issue" ng-model="issueNumber" placeholder="Issue Number" class="form-control" ng-class="has-error">
+    </div>
+    <button class="btn btn-primary" ng-click="loadComic(issueNumber)">Load Comic</button>
+</form>
+<div class="place-detail well well-lg">
+    <h1>{{comic.title}} <small>{{comic.alt}}</small></h1>
+    <img ng-src="{{comic.img}}">
 </div>
 
 <script src="../bower_components/angular/angular.js"></script>
